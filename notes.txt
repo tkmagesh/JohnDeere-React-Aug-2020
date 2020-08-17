@@ -118,6 +118,37 @@ counter = 10000
 spinner.up() => should NOT return 10001
 
 
-function add(x,y){
-    return x + y;
+//closure - solution
+var spinner = (function(){
+    var counter = 0;
+
+    function up(){
+        return ++counter;
+    }
+
+    function down(){
+        return --counter;
+    }
+
+    return {
+        up : up,
+        down : down
+    }
+})();
+
+function spinnerFactory(){
+    var counter = 0;
+
+    function up(){
+        return ++counter;
+    }
+
+    function down(){
+        return --counter;
+    }
+
+    return {
+        up : up,
+        down : down
+    }
 }
