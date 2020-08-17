@@ -152,3 +152,16 @@ function spinnerFactory(){
         down : down
     }
 }
+
+Memoization
+
+Pure functions
+    => If a function's invocation can be replaced by its result
+
+constructor functions
+    invoked with a 'new' keyword
+        this -> new object
+        this -> returned by default
+
+
+Prototypal Inheritance
