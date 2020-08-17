@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spinner</title>
+    <script>
+        (function(){
+            var spinner = (function () {
+                var counter = 0;
+
+                function up() {
+                    return ++counter;
+                }
+
+                function down() {
+                    return --counter;
+                }
+
+                return {
+                    up: up,
+                    down: down
+                }
+            })();
+
+            function onBtnUpClick(){
+                document.getElementById('spanCounter').innerText = spinner.up(); 
+            }
+
+            function onBtnDownClick(){
+                document.getElementById('spanCounter').innerText = spinner.down();
+            }
+
+            function onDocumentLoad(){
+                document.getElementById('btnUp').addEventListener('click', onBtnUpClick);
+                document.getElementById('btnDown').addEventListener('click', onBtnDownClick);
+            }
+
+            window.addEventListener('load', onDocumentLoad);
+        })();
+    </script>
+</head>
+<body>
+    <input type="button" value="DOWN" id="btnDown">
+    <span id="spanCounter"></span>
+    <input type="button" value="UP" id="btnUp">
+</body>
+</html>
