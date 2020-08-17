@@ -165,3 +165,29 @@ constructor functions
 
 
 Prototypal Inheritance
+
+ES6 (ES2015, ESNext, EcmaScript6)
+1. let
+2. const
+3. Array destructuring
+4. rest operator (array)
+5. spread operator (array)
+6. Object destructuring
+7. rest operator (Object)
+8. spread operator (Object)
+9. object constructor
+10. default arguments
+11. arrow functions
+12. template strings
+13. class
+
+http://es6-features.org/
+
+Array methods
+    forEach
+    map
+    reduce
+    filter
+
+jQuery
+
