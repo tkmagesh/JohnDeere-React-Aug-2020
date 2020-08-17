@@ -1,0 +1,86 @@
+RIA (Rich Internet Applications)
+
+JavaScript
+
+Data Types
+    Number, String, Boolean, Object, Undefined & Function
+Programming Constructs
+    var, if else, for, while, switch case, try catch finally, throw, function
+APIs
+    Date, Array, Math, RegEx, timer (setTimeout, clearTimeout, setInterval, clearInterval), Error
+
+
+Language Categories
+    Line Oriented
+    Procedural
+    Object Based
+    Object Oriented
+    Functional
+        functions are first class citizens
+        functions can be treated like data (object)
+
+
+    static
+    dynamic
+
+    strongly typed
+    loosely typed
+
+
+
+
+class Employee{
+    public int id;
+    public string name;
+    public float salary;
+}
+
+Employee emp = new Employee();
+emp.id = 200;
+emp.city = 'Bangalore'
+
+
+
+int x = 0;
+
+x = "asfddaf"
+
+var x ;
+
+x = 100;
+x = 'abc';
+x = true;
+x = {}
+x = function(){}
+
+
+arguments, this
+arguments
+    => array like object
+        arguments[0]
+        arguments[1]
+        arguments.length
+
+this 
+    => invocation context
+
+In JS, it doesnot matter who owns the function or where the function is
+        what matters is how the function is invoked
+    
+Function invocation patterns
+    As a method of an obj
+        then this => obj
+
+    As a function
+        then this => global scope (window in the browser)
+
+    Using the 'call' method of the function
+
+    Using the 'apply' method of the function
+
+
+Closures
+
+    clickTracker.html
+        Track [button]
+        div
