@@ -84,3 +84,40 @@ Closures
     clickTracker.html
         Track [button]
         div
+
+Closure - assignment
+
+create an object and assign it to a variable called 'spinner'
+    var spinner = /*.....*/
+
+The spinner object must exhibit two methods
+    up() 
+    down()
+
+the behavior of the methods should be as follows
+
+spinner.up() => 1
+spinner.up() => 2
+spinner.up() => 3
+
+spinner.down() => 2
+spinner.down() => 1
+spinner.down() => 0
+spinner.down() => -1
+
+There should be no way by which one can influence the outcome of the up or down methods
+
+the following should NOT be possible
+
+spinner.counter = 10000
+spinner.up() => should NOT return 10001
+
+OR
+
+counter = 10000
+spinner.up() => should NOT return 10001
+
+
+function add(x,y){
+    return x + y;
+}
