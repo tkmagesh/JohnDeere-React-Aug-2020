@@ -191,3 +191,29 @@ Array methods
 
 jQuery
 
+Sync model state changes with the view
+    1. Incremental
+            + Efficient
+            - Imperative
+    2. All in one
+            - Inefficient
+            + Declarative
+
+React = Efficient + Declarative
+
+zen coding
+
+HTML & JSX
+every open tag must have a close tag
+'for' attribute to be replaced with 'htmlFor'
+'class' attribute to be replaced with 'className'
+
+
+Conver the following into a Greeter component and render it
+
+<h1>Greeter</h1>
+<hr>
+<label for="">User Name :</label>
+<input type="text" name="" id="">
+<input type="button" value="Greet">
+<div class="highlight">[Greet Message]</div>
