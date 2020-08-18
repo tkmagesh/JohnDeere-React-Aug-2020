@@ -217,3 +217,42 @@ Conver the following into a Greeter component and render it
 <input type="text" name="" id="">
 <input type="button" value="Greet">
 <div class="highlight">[Greet Message]</div>
+
+
+Day-2 Assignment
+Conver the following into a functioning react component
+
+<section>
+    <div class="field">
+        <label for="">Basic :</label>
+        <input type="number" name="" id="txtBasic">
+    </div>
+    <div class="field">
+        <label for="">HRA :</label>
+        <input type="number" name="" id="txtHra">
+    </div>
+    <div class="field">
+        <label for="">DA :</label>
+        <input type="number" name="" id="txtDa">
+    </div>
+    <div class="field">
+        <label for="">Tax :</label>
+        <input type="range" name="" id="rangeTax" min="0" max="30">
+    </div>
+    <div class="field">
+        <input type="button" value="Calculate" id="btnCalculate">
+    </div>
+    <div class="field">
+        <table>
+            <tbody>
+                <tr>
+                    <td id="tdBasic">[Basic]</td>
+                    <td id="tdHra">[HRA]</td>
+                    <td id="tdDa">[DA]</td>
+                    <td id="tdTax">[Tax]</td>
+                    <td id="tdSalary">[Salary]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

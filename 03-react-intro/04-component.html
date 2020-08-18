@@ -86,9 +86,11 @@
         }
 
         /* ReactDOM.render(React.createElement(Greeter), document.getElementById("root")); */
+        const x = 100,
+            y = 200;
         ReactDOM.render(
             <div>
-                <Greeter greetTemplate="Have a good day!" />
+                <Greeter greetTemplate="Have a good day!" x={x} y={y} />
                 <Greeter greetTemplate="Have a nice day!" />
             </div>
             , document.getElementById("root"));
