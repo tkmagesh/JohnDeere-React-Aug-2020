@@ -76,47 +76,53 @@
             //encapsulates presentation and UI behavior
             //sync with the model state changes
         function SalaryCalculator(model){
-            var _template = `
-                <section>
-                    <div class="field">
-                        <label for="">Basic :</label>
-                        <input type="number" name="" id="txtBasic">
-                        </div>
-                    <div class="field">
-                        <label for="">HRA :</label>
-                        <input type="number" name="" id="txtHra">
-                        </div>
-                    <div class="field">
-                        <label for="">DA :</label>
-                        <input type="number" name="" id="txtDa">
-                        </div>
-                    <div class="field">
-                        <label for="">Tax :</label>
-                        <input type="range" name="" id="rangeTax" min="0" max="30" value="0">
-                        </div>
-                    <div class="field">
-                        <input type="button" value="Calculate" id="btnCalculate">
-                        </div>
-                    <div class="field">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td id="tdBasic">[Basic]</td>
-                                    <td id="tdHra">[HRA]</td>
-                                    <td id="tdDa">[DA]</td>
-                                    <td id="tdTax">[Tax]</td>
-                                    <td id="tdSalary">[Salary]</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            `
             
             var $viewEle = this.$viewEle = $('<div></div>');
 
             this.render = function(){
-                $viewEle.html(_template);
+                const basic = model.get('basic'),
+                    hra = model.get('hra'),
+                    da = model.get('da'),
+                    tax = model.get('tax'),
+                    salary = model.get('salary');
+
+                const viewHtml = `
+                    <section>
+                        <div class="field">
+                            <label for="">Basic :</label>
+                            <input type="number" name="" id="txtBasic">
+                            </div>
+                        <div class="field">
+                            <label for="">HRA :</label>
+                            <input type="number" name="" id="txtHra">
+                            </div>
+                        <div class="field">
+                            <label for="">DA :</label>
+                            <input type="number" name="" id="txtDa">
+                            </div>
+                        <div class="field">
+                            <label for="">Tax :</label>
+                            <input type="range" name="" id="rangeTax" min="0" max="30" value="0">
+                            </div>
+                        <div class="field">
+                            <input type="button" value="Calculate" id="btnCalculate">
+                            </div>
+                        <div class="field">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td id="tdBasic">${basic}</td>
+                                        <td id="tdHra">${hra}</td>
+                                        <td id="tdDa">${da}</td>
+                                        <td id="tdTax">${tax}</td>
+                                        <td id="tdSalary">${salary}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                `
+                $viewEle.html(viewHtml);
             }
 
             //Reacting to user actions
@@ -141,20 +147,20 @@
             });
 
             //Reacting to model changes
-            model.subscribe('salary', function () {
-                $('#tdSalary', $viewEle).text(model.get('salary'));
+            model.subscribe('salary',  () => {
+                this.render();
             });
-            model.subscribe('basic', function () {
-                $('#tdBasic', $viewEle).text(model.get('basic'));
+            model.subscribe('basic',  () => {
+                this.render();
             });
-            model.subscribe('hra', function () {
-                $('#tdHra', $viewEle).text(model.get('hra'));
+            model.subscribe('hra',  () => {
+                this.render();
             });
-            model.subscribe('da', function () {
-                $('#tdDa', $viewEle).text(model.get('da'));
+            model.subscribe('da',  () => {
+                this.render();
             });
-            model.subscribe('tax', function () {
-                $('#tdTax', $viewEle).text(model.get('tax'));
+            model.subscribe('tax',  () => {
+                this.render();
             });
         }
         /* $(() => {
