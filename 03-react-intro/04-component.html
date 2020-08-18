@@ -16,7 +16,8 @@
     <script src="babel.min.js"></script>
 
     <script type="text/babel">
-        class Greeter extends React.Component{
+        //using ref
+        /* class Greeter extends React.Component{
             //state
             state = { 
                 msg : 'A dummy greet message'
@@ -40,6 +41,44 @@
                         <hr/>
                         <label htmlFor="">User Name :</label>
                         <input type="text" ref={this.txtUserNameRef}/>
+                        <input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
+                        <div className="highlight">{this.state.msg}</div>
+                    </div>
+                );
+            }
+        }*/
+
+        class Greeter extends React.Component{
+            //state
+            state = {
+                userName : '',
+                msg : 'A dummy greet message'
+            };
+
+
+            //behavior
+            onBtnGreetClick = () => {
+                const userName = this.state.userName;
+                this.setState({
+                    msg : `Hi ${userName}, Have a nice day!`
+                });
+            }
+
+            onTxtUserNameChange = (evt) => {
+                this.setState({
+                    userName : evt.target.value
+                });
+            }
+            
+            //presentation
+            render(){
+                
+                return (
+                    <div>
+                        <h1>Greeter</h1>
+                        <hr/>
+                        <label htmlFor="">User Name :</label>
+                        <input type="text" onChange={this.onTxtUserNameChange}/>
                         <input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
                         <div className="highlight">{this.state.msg}</div>
                     </div>
