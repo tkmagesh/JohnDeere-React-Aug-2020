@@ -256,3 +256,15 @@ Conver the following into a functioning react component
         </table>
     </div>
 </section>
+
+
+State
+    => UI State
+        - Supports the pressentation logic of the application
+        - Very less likely that this state might be needed in other parts of the application
+        - It is OK to use the component state for this data
+
+    => App State
+        - Supports the business logic of the application
+        - Very Highly likely that this state might be needed in other parts of the application
+        - It is NOT OK to use the component state for this data
