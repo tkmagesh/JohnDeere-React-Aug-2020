@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>State Manager</title>
+    <script src="state-manager.js"></script>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <!-- 
+        01. initial implementation
+        02. remove the dependency on the store in the component
+        03. introducing 'action creators'
+        04. introducing 'action dispatchers'
+        05. simplify passing the action dispatchers to the component
+        06. generalizing the creation of action dispatchers in 'bindActionCreators'
+        07. refactoring the 'bindActionCreators' to 'state-manager.js'
+        08. converting the 'class' Spinner into a function component
+        09. handling payloads (supporting data for an action)
+     -->
+    <script>
+        function spinnerReducer(currentState = 0, action) {
+            if (action.type === 'UP') return currentState + action.payload;
+            if (action.type === 'DOUBLE_UP') return currentState * 2;
+            if (action.type === 'DOWN') return currentState - action.payload;
+            if (action.type === 'DOUBLE_DOWN') return currentState / 2;
+            return currentState;
+        }
+        
+        var store = StateManager.createStore(spinnerReducer);
+
+        var spinnerActionCreators = {
+                down(delta) {
+                    const down_action = { type: 'DOWN', payload : delta };
+                    return down_action;
+                },
+                up(delta) {
+                    const up_action = { type: 'UP', payload: delta };
+                    return up_action;
+                },
+                doubleUp() {
+                    const action = { type: 'DOUBLE_UP' };
+                    return action;
+                },
+                doubleDown(){
+                    const action = { type : 'DOUBLE_DOWN'};
+                    return action;
+                }
+            }
+
+            
+    </script>
+    <script type="text/babel">
+         class Spinner extends React.Component{
+            state = {
+                delta : 0
+            };
+            render(){
+                const { value, up, down, doubleUp, doubleDown } = this.props;
+                const { delta } = this.state;
+                return (
+                    <div>
+                        <h3>Spinner</h3>
+                        <hr/>
+                        <label>Delta : </label>
+                        <input type="number" value={delta} onChange={evt => this.setState({ delta: evt.target.valueAsNumber })} />
+                        <br/>
+                        <input type="button" value="DOUBLE DOWN" onClick={doubleDown} />
+                        <input type="button" value="DOWN" onClick={() => down(delta)} />
+                        <span> [ {value} ] </span>
+                        <input type="button" value="UP" onClick={() => up(delta)} />
+                        <input type="button" value="DOUBLE UP" onClick={doubleUp}/>
+                    </div>
+                )
+            }
+        }
+
+        var spinnerActionDispatchers = StateManager.bindActionCreators(spinnerActionCreators, store.dispatch);
+
+        function renderApp(){
+            const value = store.getState();
+            ReactDOM.render(
+                <Spinner value={value} {...spinnerActionDispatchers} />
+            , document.getElementById('root'));
+        }
+        renderApp();
+        store.subscribe(renderApp);
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    
+</body>
+</html>
