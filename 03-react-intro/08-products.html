@@ -27,6 +27,7 @@
                     <div>
                         <h1>Products</h1>
                         <hr/>
+                        
                         <label htmlFor="">Product Name :</label>
                         <input type="text" onChange={ evt => this.setState({newProductName : evt.target.value }) }/>
                         <input type="button" value="Add New" onClick={ this.onAddNewClick  } />
@@ -38,10 +39,19 @@
             }
         }
 
-        ReactDOM.render(<Products/>, document.getElementById('root'));
+        ReactDOM.render(
+            <div>
+                <div>
+                    <span> Products # : </span>
+                    <span>{0}</span>
+                </div>
+                <Products/>
+            </div>
+            , document.getElementById('root'));
     </script>
 </head>
 <body>
+
     <div id="root">
         
     </div>
