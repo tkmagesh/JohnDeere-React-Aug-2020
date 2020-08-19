@@ -268,3 +268,22 @@ State
         - Supports the business logic of the application
         - Very Highly likely that this state might be needed in other parts of the application
         - It is NOT OK to use the component state for this data
+
+
+http://bit.ly/react-videos
+
+
+Assignment:
+Solve the below using (state-manager.js / redux.js)
+
+<h3>Calculator</h3>
+<hr>
+<input type="number" name="" id="">
+<input type="number" name="" id="">
+<br>
+<input type="button" value="Add">
+<input type="button" value="Subtract">
+<input type="button" value="Multiply">
+<input type="button" value="Divide">
+<div>[result]</div>
+
