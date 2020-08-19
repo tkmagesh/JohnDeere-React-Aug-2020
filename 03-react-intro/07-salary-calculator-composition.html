@@ -19,6 +19,12 @@
             padding-right: 10px;
             font-size: 18pt;
         }
+        .poorSalary{
+            color : red;
+        }
+        .goodSalary{
+            color : green;
+        }
     
     </style>
     <script src="react.development.js"></script>
@@ -85,6 +91,8 @@
             render(){
                 const { data } = this.props,
                     { basic, hra, da, tax, salary } = data;
+                //const salaryEle = salary < 10000 ? (<td className="poorSalary">{salary}</td>) : (<td className="goodSalary">{salary}</td>);
+                const salaryEle = (<td className={salary < 10000 ? "poorSalary" : "goodSalary"}>{salary}</td>);
                 return(
                     <div className="field">
                         <table>
@@ -94,7 +102,7 @@
                                     <td>{hra}</td>
                                     <td>{da}</td>
                                     <td>{tax}</td>
-                                    <td>{salary}</td>
+                                    {salary === 0 ? null : salaryEle}
                                 </tr>
                             </tbody>
                         </table>
