@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>State Manager</title>
+    <script src="state-manager.js"></script>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <!-- 
+        01. initial implementation
+        02. remove the dependency on the store in the component
+        03. introducing 'action creators'
+        04. introducing 'action dispatchers'
+        05. simplify passing the action dispatchers to the component
+     -->
+    <script>
+        function spinnerReducer(currentState = 0, action) {
+            if (action.type === 'UP') return currentState + 1;
+            if (action.type === 'DOWN') return currentState - 1;
+            return currentState;
+        }
+        
+        var store = StateManager.createStore(spinnerReducer);
+    </script>
+    <script type="text/babel">
+        var spinnerActionCreators = {
+            down(){
+                const down_action = { type : 'DOWN' };
+                return down_action;
+            },
+            up(){
+                const up_action = { type : 'UP' };
+                return up_action;
+            }
+        }
+
+        function bindActionCreators(spinnerActionCreators, dispatch){
+
+            var spinnerActionDispatchers = {
+                down(){
+                    const action = spinnerActionCreators.down();
+                    dispatch(action);
+                },
+                up(){
+                    const action = spinnerActionCreators.up();
+                    dispatch(action);
+                }
+            };
+            return spinnerActionDispatchers;
+        }
+
+
+       /*  class Spinner extends React.Component{
+            onDownClick = () => {
+                this.props.down();
+            }
+
+            onUpClick = () => {
+                this.props.up();
+            }
+
+            render(){
+                const { value } = this.props;
+                return (
+                    <div>
+                        <h3>Spinner</h3>
+                        <hr/>
+                        <input type="button" value="DOWN" onClick={this.onDownClick} />
+                        <span> [ {value} ] </span>
+                        <input type="button" value="UP" onClick={this.onUpClick} />
+                    </div>
+                )
+            }
+        } */
+
+         class Spinner extends React.Component{
+            render(){
+                const { value, up, down } = this.props;
+                return (
+                    <div>
+                        <h3>Spinner</h3>
+                        <hr/>
+                        <input type="button" value="DOWN" onClick={down} />
+                        <span> [ {value} ] </span>
+                        <input type="button" value="UP" onClick={up} />
+                    </div>
+                )
+            }
+        }
+
+        var spinnerActionDispatchers = bindActionCreators(spinnerActionCreators, store.dispatch);
+
+        function renderApp(){
+            const value = store.getState();
+            ReactDOM.render(
+                /* <Spinner value={value} up={spinnerActionDispatchers.up} down={spinnerActionDispatchers.down} /> */
+                <Spinner value={value} {...spinnerActionDispatchers} />
+            , document.getElementById('root'));
+        }
+        renderApp();
+        store.subscribe(renderApp);
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    
+</body>
+</html>
