@@ -2,6 +2,7 @@ var StateManager = (function(){
     var _currentState = undefined,
         _callbacks = [],
         _reducer = undefined,
+        _init_action = { type : '@@INIT/ACTION' };
 
     function getState(){
         return _currentState;
@@ -26,6 +27,8 @@ var StateManager = (function(){
         if (typeof reducer !== 'function')
             throw new Error('A reducer is mandatory to create the store');
         _reducer = reducer;
+        //to initialize the currentState with the default valid state
+        _currentState = _reducer(undefined, _init_action);
         var store = { getState, subscribe, dispatch };
         return store;
     }
