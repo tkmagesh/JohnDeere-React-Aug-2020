@@ -49,7 +49,7 @@
         (done) 2. List the added bugs
         (done) 3. Toggle the 'closed' status of any bug
         (done) 4. Remove any bug
-        5. Remove all the closed bugs
+        (done) 5. Remove all the closed bugs
         6. Display stats (# of closed bugs / total # of bugs)
         7. Sort the bugs (assignment)
         8. Persist the bugs the server
@@ -79,6 +79,11 @@
                 const newState = currentState.filter(bug => bug.id !== bugToRemove.id);
                 return newState;
             }
+            if (action.type === 'REMOVE_BUGS'){
+                const bugsToRemove = action.payload;
+                const newState = currentState.filter(existingBug => !bugsToRemove.find(bug => bug.id === existingBug.id));
+                return newState;
+            }
             return currentState;
         }
 
@@ -104,6 +109,11 @@
             remove(bugToRemove){
                 const action = { type : 'REMOVE_BUG', payload : bugToRemove };
                 return action;
+            },
+            removeClosed(bugs){
+                const bugsToRemove = bugs.filter(bug => bug.isClosed);
+                const action = { type : 'REMOVE_BUGS', payload : bugsToRemove };
+                return action;
             }
 
         }
@@ -113,7 +123,7 @@
                 newBugName : ''
             };
             render(){
-                const { bugs, addNew, toggle, remove } = this.props;
+                const { bugs, addNew, toggle, remove, removeClosed } = this.props;
                 const bugItems = bugs.map(bug => {
                     const bugStyle = 'bugname ' + (bug.isClosed ? 'closed' : '');
                     return (
@@ -163,7 +173,7 @@
                             <ol>
                                 {bugItems}
                             </ol>
-                            <input type="button" value="Remove Closed"/>
+                            <input type="button" value="Remove Closed" onClick={ () => removeClosed(bugs) }/>
                         </section>
                     </>
                 )
