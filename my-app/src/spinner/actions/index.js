@@ -14,6 +14,10 @@ var spinnerActionCreators = {
     doubleDown() {
         const action = { type: 'DOUBLE_DOWN' };
         return action;
+    },
+    applyFilter(value){
+        const action = { type : 'APPLY_FILTER', payload: value };
+        return action;
     }
 }
 

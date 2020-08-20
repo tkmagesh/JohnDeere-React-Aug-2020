@@ -30,8 +30,13 @@ class BugTracker extends React.Component {
 //transforming the storeState into the props for the component
 function mapStateToProps(storeState){
     const bugs = storeState.bugsData,
-        value = storeState.spinnerData;
-    return { bugs : bugs.filter(bug => bug.id % 2 ===  value % 2) };
+        value = storeState.spinnerData,
+        shouldFilter = storeState.filterData;
+    if (shouldFilter){
+        return { bugs: bugs.filter(bug => bug.id % 2 === value % 2)}
+    } else {
+        return { bugs :  bugs};
+    }
 }
 
 //transforming the 'dispatch' into props for the component

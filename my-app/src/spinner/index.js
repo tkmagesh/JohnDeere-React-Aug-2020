@@ -9,7 +9,7 @@ class Spinner extends React.Component {
         delta: 0
     };
     render() {
-        const { value, up, down, doubleUp, doubleDown } = this.props;
+        const { value, up, down, doubleUp, doubleDown, applyFilter } = this.props;
         const { delta } = this.state;
         return (
             <div>
@@ -25,7 +25,7 @@ class Spinner extends React.Component {
                 <input type="button" value="DOUBLE UP" onClick={doubleUp} />
                 <hr/>
                 <label>Apply Filter : </label>
-                <input type="checkbox" />
+                <input type="checkbox" onChange={ evt => applyFilter(evt.target.checked)} />
             </div>
         )
     }
