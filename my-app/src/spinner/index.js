@@ -23,6 +23,9 @@ class Spinner extends React.Component {
                 <span> [ {value} ] </span>
                 <input type="button" value="UP" onClick={() => up(delta)} />
                 <input type="button" value="DOUBLE UP" onClick={doubleUp} />
+                <hr/>
+                <label>Apply Filter : </label>
+                <input type="checkbox" />
             </div>
         )
     }

@@ -8,7 +8,7 @@ const BugItem = ({ bug, toggle, remove }) => {
                 className={bugStyle}
                 onClick={() => toggle(bug)}
             >
-                {bug.name}
+                {bug.name} - <small>[{bug.id}]</small>
             </span>
             <div className="datetime">{bug.createdAt.toString()}</div>
             <input type="button" value="Remove" onClick={() => remove(bug)} />
