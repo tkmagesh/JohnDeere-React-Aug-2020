@@ -5,21 +5,34 @@ import { bindActionCreators } from 'redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import bugActionCreators from './bugTracker/actions';
-import appStore from './store';
-import BugTracker from './bugTracker';
 
+import appStore from './store';
+
+import spinnerActionCreators from './spinner/actions';
+import bugActionCreators from './bugTracker/actions';
+
+import BugTracker from './bugTracker';
+import Spinner from './spinner';
+
+const spinnerActionDispatchers = bindActionCreators(spinnerActionCreators, appStore.dispatch);
 const bugActionDispatchers = bindActionCreators(bugActionCreators, appStore.dispatch);
 
 function renderApp() {
-  const bugs = appStore.getState();
+  const storeState = appStore.getState();
+  const value = storeState.spinnerData;
+  const bugs = storeState.bugsData;
+
   ReactDOM.render(
-    <BugTracker bugs={bugs} {...bugActionDispatchers} />
-    , document.getElementById('root'))
+    <div>
+      <h1>My App</h1>
+      <Spinner value={value} {...spinnerActionDispatchers} />
+      <hr/>
+      <BugTracker bugs={bugs} {...bugActionDispatchers} />
+    </div>
+    , document.getElementById('root'));
 }
 renderApp();
 appStore.subscribe(renderApp);
-
 
 
 /* ReactDOM.render(

@@ -12,7 +12,7 @@ class BugTracker extends React.Component {
         const { bugs, addNew, toggle, remove, removeClosed } = this.props;
         return (
             <>
-                <h1>Bug Tracker</h1>
+                <h3>Bug Tracker</h3>
                 <hr />
                 <BugStats bugs={bugs} />
                 <BugSort />
