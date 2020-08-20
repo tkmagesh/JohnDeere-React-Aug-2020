@@ -327,3 +327,20 @@ Container components / Smart Components
 
 Presentation Components / Dumb components
     receive the data & action dispatchers from the parent component
+
+
+Component Lifecycle methods
+    Mounted
+    Updated
+    Unmounted
+
+Mounted
+    componentWillMount
+    componentDidMount
+
+Updated
+    componentShouldUpdate
+    componentWillUpdate
+
+Unmounted
+    componentWillUnmount
