@@ -287,3 +287,11 @@ Solve the below using (state-manager.js / redux.js)
 <input type="button" value="Divide">
 <div>[result]</div>
 
+Hooks
+    functions to handle side effects in functional components
+    hook name has to start with 'use'
+    Builtin hooks
+        useState
+        useEffect
+        useMemo,
+        useReducer
