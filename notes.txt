@@ -316,3 +316,7 @@ to install redux
     yarn add redux
         OR
     npm install redux
+
+react-redux
+    connect
+    Provider
