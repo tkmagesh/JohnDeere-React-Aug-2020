@@ -1,4 +1,8 @@
 import React from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+import spinnerActionCreators from "./actions";
 
 class Spinner extends React.Component {
     state = {
@@ -24,4 +28,14 @@ class Spinner extends React.Component {
     }
 }
 
-export default Spinner;
+function mapStateToProps(storeState){
+    const value = storeState.spinnerData;
+    return { value : value };
+}
+
+function mapDispatchToProps(dispatch){
+    const spinnerActionDispatchers = bindActionCreators(spinnerActionCreators, dispatch);
+    return spinnerActionDispatchers;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Spinner);
