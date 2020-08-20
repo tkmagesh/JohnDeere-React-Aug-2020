@@ -41,10 +41,11 @@ class Timer extends Component{
     shouldComponentUpdate(){
         /* console.log(arguments);
         return false; */
+        return true;
     }
 
     componentWillUpdate(){
-        console.log('timer will be updated');
+        //console.log('timer will be updated');
     }
 
     render(){
