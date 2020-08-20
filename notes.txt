@@ -309,3 +309,10 @@ ES6 Modules
     1. Everything defined in a file is considered private
     2. Public entites need to be explicity exported
     3. To use the entities defined in other files, they have to be explicity imported
+
+npm uninstall create-react-app -g
+
+to install redux
+    yarn add redux
+        OR
+    npm install redux
