@@ -9,11 +9,13 @@ import appStore from './store';
 
 import BugTracker from './bugTracker';
 import Spinner from './spinner';
+import TimerContainer from "./timer";
 
 ReactDOM.render(
     <Provider store={appStore}>
       <div>
         <h1>My App</h1>
+        <TimerContainer/>
         <Spinner/>
         <hr/>
         <BugTracker/>

@@ -320,3 +320,10 @@ to install redux
 react-redux
     connect
     Provider
+
+Container components / Smart Components
+    receive the data from the store (using the connect API)
+    advisable to have fewer container components
+
+Presentation Components / Dumb components
+    receive the data & action dispatchers from the parent component
