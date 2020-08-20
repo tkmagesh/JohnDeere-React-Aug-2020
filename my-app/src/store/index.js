@@ -1,12 +1,5 @@
-import { createStore, combineReducers } from 'redux';
-
-import bugsReducer from '../reducers/bugsReducer';
-import spinnerReducer from '../reducers/spinnerReducer';
-
-const rootReducer = combineReducers({
-    bugsData : bugsReducer,
-    spinnerData : spinnerReducer
-});
+import { createStore } from 'redux';
+import rootReducer from '../reducers';
 
 const appStore = createStore(rootReducer);
 
