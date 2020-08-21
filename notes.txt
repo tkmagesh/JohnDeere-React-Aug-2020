@@ -359,3 +359,67 @@ from the folder containing the data file (db.json)
     > npx json-server db.json -p 3030
 
 
+Asynchronous Programming
+    Asynchronous Operation
+        Non Blocking Operation
+        An operation that is initiated but not wait for its completion
+
+
+    |
+    |
+    - - - - - - - > - - - - - - - -|
+                                   |
+                                   |
+                                   |
+    - - - - - - - < - - - - - - - -                               
+    |
+    |
+
+    1. callbacks
+    2. event emitters
+    3. promises
+    4. async await
+    5. generators
+    6. observables
+
+Using axios
+    yarn add axios
+
+
+//to get all the bugs
+axios.get('http://localhost:3030/bugs')
+        .then(response => response.data)
+        .then(bugs => console.table(bugs))
+
+//to get one bug by id
+axios.get('http://localhost:3030/bugs/1')
+        .then(response => response.data)
+        .then(bug => console.log(bug))
+
+
+//to create a new bug
+const newBugData = {
+    id : 0,
+    name : 'Axios is not working',
+    isClosed : false,
+    createdAT : new Date()
+}
+axios.post('http://localhost:3030/bugs', newBugData)
+    .then(response => response.data)
+    .then(newBug => console.log(newBug))
+
+//to update a bug
+const updatedBugData = {
+    id : 3,
+    name : 'Axios is not working from the beginning',
+    isClosed : true,
+    createdAT : new Date()
+}
+axios.put('http://localhost:3030/bugs/3', updatedBugData)
+    .then(response => response.data)
+    .then(newBug => console.log(newBug))
+
+//to delete a bug
+axios.delete('http://localhost:3030/bugs/3')
+    .then(response => response.data)
+    .then(x => console.log(x))
