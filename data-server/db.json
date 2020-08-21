@@ -1,5 +1,24 @@
 {
-  "bugs": [],
+  "bugs": [
+    {
+      "id": 2,
+      "name": "Data integrity checks failed",
+      "isClosed": false,
+      "createdAt": "2020-08-21T10:29:31.368Z"
+    },
+    {
+      "id": 3,
+      "name": "User actions not recognized",
+      "isClosed": false,
+      "createdAt": "2020-08-21T10:29:43.963Z"
+    },
+    {
+      "id": 4,
+      "name": "Server communication failure",
+      "isClosed": false,
+      "createdAt": "2020-08-21T10:39:25.429Z"
+    }
+  ],
   "projects": [
     {
       "id": 1,

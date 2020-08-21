@@ -21,7 +21,7 @@ function loggerMiddleware(store){
 
 */
 
-const loggerMiddleware = store => next => action => {
+/* const loggerMiddleware = store => next => action => {
     console.group(action.type);
     console.group('Before');
     console.log(store.getState());
@@ -41,6 +41,18 @@ const asyncMiddleware = store => next => action => {
     return next(action);
 }
 
-const appStore = createStore(rootReducer, applyMiddleware(loggerMiddleware, asyncMiddleware));
+const appStore = createStore(rootReducer, applyMiddleware(loggerMiddleware, asyncMiddleware)); */
 
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+
+const promiseMiddleware = store => next => action => {
+    if (action instanceof Promise) {
+        action.then(actionObj => store.dispatch(actionObj));
+    } else {
+        return next(action);
+    }
+}
+
+const appStore = createStore(rootReducer, applyMiddleware(logger, thunk, promiseMiddleware));
 export default appStore;
