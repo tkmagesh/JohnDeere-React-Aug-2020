@@ -427,4 +427,37 @@ axios.delete('http://localhost:3030/bugs/3')
 
 store.dispatch
 
-m1 -> m2 -> m3 -> dispatch
+TO DO:
+    Add a Projects module
+        /projects route
+        Add new projects
+        List the added projects
+        Clicking on the project name should navigate to the bug tracker with the bugs listed for that project
+
+    In the Bug tracker
+        add a drop down listing all the projects names
+        Whenever a bug is added, it is created for a particular project
+        Have a link (More) for each bug when clicked will display more information about that bug
+
+    Handle 404 scenariors
+
+Build
+    JS files need to be compiled
+    JS files need to be bundled
+    JS files need to be minified
+    JS files need to be uglified
+    Version the JS file
+    Update the JS file reference in the html page
+
+    CSS compilation
+    CSS minified
+    CSS bundling
+    Version the CSS file
+    Update the CSS file reference in the html page
+
+    minify the html file
+
+    Grunt
+    Gulp
+
+    Webpack
