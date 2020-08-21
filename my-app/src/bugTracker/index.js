@@ -12,6 +12,9 @@ import BugList from './components/bugList';
 import bugActionCreators from './actions';
 
 class BugTracker extends React.Component {
+    componentDidMount(){
+        this.props.load();
+    }
     render() {
         const { bugs, addNew, toggle, remove, removeClosed } = this.props;
         return (

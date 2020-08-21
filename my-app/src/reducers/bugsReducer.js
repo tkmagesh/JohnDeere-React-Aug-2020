@@ -19,6 +19,10 @@ function bugsReducer(currentState = initialState, action) {
         const newState = currentState.filter(existingBug => !bugsToRemove.find(bug => bug.id === existingBug.id));
         return newState;
     }
+    if (action.type === 'INIT_BUGS') {
+        const newState = action.payload;
+        return newState;
+    }
     return currentState;
 }
 export default bugsReducer;
