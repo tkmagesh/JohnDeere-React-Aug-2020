@@ -344,3 +344,18 @@ Updated
 
 Unmounted
     componentWillUnmount
+
+
+Redux Middleware
+    Any functionality that is common for all the actions
+
+
+m1(action) -> m2(action) -> m3(action) -> dispatch(action)
+
+json-server
+    expose an endpoint for a restful service based on the data from a json file
+
+from the folder containing the data file (db.json)
+    > npx json-server db.json -p 3030
+
+
