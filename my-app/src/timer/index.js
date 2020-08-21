@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TimerContainer extends Component {
+/* class TimerContainer extends Component {
     state = {
         showTimer : true
     };
@@ -16,9 +16,22 @@ class TimerContainer extends Component {
             </div>
         )
     }
+} */
+
+const TimerContainer = () => {
+    const [showTimer, setShowTimer] = React.useState(true);
+    return (
+        <div>
+            <input
+                type="button"
+                value="Toggle Timer"
+                onClick={() => setShowTimer(!showTimer)} />
+            {showTimer ? <Timer /> : null}
+        </div>
+    )
 }
 
-class Timer extends Component{
+/* class Timer extends Component{
     state = { 
         currentTime : ''
     }
@@ -39,8 +52,8 @@ class Timer extends Component{
     }
 
     shouldComponentUpdate(){
-        /* console.log(arguments);
-        return false; */
+        // console.log(arguments);
+        // return false; 
         return true;
     }
 
@@ -53,6 +66,28 @@ class Timer extends Component{
             <div>{this.state.currentTime}</div>
         )
     }
-}
+} */
+
+
+const Timer = () => {
+    const [currentTime, setCurrentTime] = React.useState((new Date()).toString());
+    
+    React.useEffect(() => {
+        const timerId = setInterval(() => {
+            setCurrentTime((new Date()).toString());
+        }, 1000);
+        console.log('component is mounted / updated ');
+        return () => {
+            console.log('component is unmounted');
+            if (timerId) {
+                clearInterval(timerId);
+            }
+        }
+    }, []);
+
+    return (
+        <div>{currentTime}</div>
+    )
+};
 
 export default TimerContainer
