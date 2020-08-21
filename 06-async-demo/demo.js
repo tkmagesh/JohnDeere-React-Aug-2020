@@ -30,21 +30,33 @@
     }
     window['addAsyncClient'] = addAsyncClient;
 
-
     function addAsyncPromise(x, y) {
         console.log(`   [@Service] processing ${x} and ${y}`);
-
         const promise = new Promise(function(resolve, reject){
             setTimeout(function () {
                 const result = x + y;
                 console.log(`   [@Service] returning the result`);
                 resolve(result);
             }, 5000);
-        });
-        
+        });     
         return promise;
     }
 
-    window['addAsyncPromise'] = addAsyncPromise;
+    /* function addAsyncPromiseClient(x,y){
+        console.log(`[@Client] invoking the service`);
+        const p = addAsyncPromise(x,y);
+        p.then(function(result){
+            console.log(`[@Client] result = ${result}`);
+        });
+    } */
+
+    async function addAsyncPromiseClient(x, y) {
+        console.log(`[@Client] invoking the service`);
+        const result = await addAsyncPromise(x, y);
+        console.log(`[@Client] result = ${result}`);
+        //return result * 2;
+    }
+
+    window['addAsyncPromiseClient'] = addAsyncPromiseClient;
 
 })();
