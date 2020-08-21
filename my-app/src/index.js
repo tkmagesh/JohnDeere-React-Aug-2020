@@ -4,6 +4,13 @@ import { Provider } from "react-redux";
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 import appStore from './store';
 
@@ -11,17 +18,32 @@ import BugTracker from './bugTracker';
 import Spinner from './spinner';
 import TimerContainer from "./timer";
 
-import axios from 'axios';
-window['axios'] = axios;
+const Home = () => (
+  <div><TimerContainer /></div>
+);
 
 ReactDOM.render(
     <Provider store={appStore}>
       <div>
         <h1>My App</h1>
-        <TimerContainer/>
-        <Spinner/>
-        <hr/>
-        <BugTracker/>
+        <Router>
+          <div>
+            <span> [ <Link to="/">Home</Link> ] </span>
+            <span> [ <Link to="/spinner">Spinner</Link> ] </span>
+            <span> [ <Link to="/bugs">Bug Tracker</Link> ] </span>
+            <Switch>
+              <Route path="/spinner">
+                <Spinner />
+              </Route>
+              <Route path="/bugs">
+                <BugTracker />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
     </Provider>
     , document.getElementById('root'));
